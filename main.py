@@ -10,7 +10,7 @@ from discord.ext.commands import *
 from keep_alive import keep_alive
 # end of modules
 
-intents = discord.Intents(messages=True, members=True, guilds=True)
+intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='run/', intents=intents)
 owner = ["αrchιshα#5518", "notsniped#4573", "thatOneArchUser#5794"]
 oid = [706697300872921088, 738290097170153472, 705462972415213588]
