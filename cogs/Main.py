@@ -1,4 +1,8 @@
 # modules
+import io
+import inspect
+import traceback
+import textwrap
 import random
 import json
 import os
@@ -11,6 +15,7 @@ import math
 import string
 import praw
 import prawcore
+from contextlib import redirect_stdout
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 from datetime import datetime
 from random import randint
