@@ -27,7 +27,8 @@ from discord.ext.commands import *
 owner = ["αrchιshα#5518", "notsniped#4573", "thatOneArchUser#5794"]
 oid = [706697300872921088, 738290097170153472, 705462972415213588]
 
-#current_time = now.strftime("%H:%M:%S")
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
 
 # error handler
 class ErrorHandler(commands.Cog):
