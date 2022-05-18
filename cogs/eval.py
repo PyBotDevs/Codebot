@@ -1,24 +1,11 @@
-# modules
-import io
-import inspect
-import traceback
-import textwrap
-import random
-import json
-import os
-import discord
-import asyncio
-import datetime
-import time
-import cmath
-import math
-import string
-import praw
-import prawcore
+# eval modules
+import textwrap, traceback, io, inspect
 from contextlib import redirect_stdout
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+# modules
+import discord
+import datetime
+import math
 from datetime import datetime
-from random import randint
 from discord.errors import InvalidArgument
 from discord.ext import commands
 from discord.ext.commands import *
@@ -80,17 +67,27 @@ class ErrorHandler(commands.Cog):
                 # after @commands.command() add @commands.cooldown(1, cooldown, commands.BucketType.user)
 # end of error handler
 
-class MainCog(commands.Cog):
+class EvalCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    def cleanup_code(self, content):
+        if content.startswith('```') and content.endswith('```'):
+            return '\n'.join(content.split('\n')[1:-1])
+
+        return content.strip('` \n')
+
+    def get_syntax_error(self, e):
+        if e.text is None:
+            return f'```py\n{e.__class__.__name__}: {e}\n```'
+        return f'```py\n{e.text}{"^":>{e.offset}}\n{e.__class__.__name__}: {e}```'
 
     @commands.command(name='evaluate', aliases=['eval', 'e'])
     @commands.cooldown(1, 5, commands.BucketType.user)
     async def _eval(self, ctx, *, body):
         if ctx.message.author.id not in oid: return
-        blocked_words = ['while', 'quit', 'exit', 'SystemExit', 'open', '.delete()', 'os', 'subprocess', 'history()', '("token")', "('token')",
-                        'aW1wb3J0IG9zCnJldHVybiBvcy5lbnZpcm9uLmdldCgndG9rZW4nKQ==', 'aW1wb3J0IG9zCnByaW50KG9zLmVudmlyb24uZ2V0KCd0b2tlbicpKQ==']
-        if ctx.message.author.id != 705462972415213588:
+        blocked_words = ['while', 'quit', 'exit', 'SystemExit', 'open', '.delete()', 'os', 'subprocess', 'history()', '("token")', "('token')"]
+        if ctx.message.author.id != 706697300872921088:
             for x in blocked_words:
                 if x in body:
                     return await ctx.send('Your code contains certain blocked words.')
@@ -166,7 +163,7 @@ class MainCog(commands.Cog):
             await ctx.message.add_reaction('\u2049')
         else:
             await ctx.message.add_reaction('\u2705')
-
+            
 def setup(bot):
     bot.add_cog(ErrorHandler(bot))
-    bot.add_cog(MainCog(bot))
+    bot.add_cog(EvalCog(bot))
