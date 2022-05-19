@@ -1,14 +1,39 @@
 # eval modules
-import textwrap, traceback, io, inspect
-from contextlib import redirect_stdout
-# modules
-import discord
-import datetime
+import os
+import sys
+import time
+import praw
 import math
-from datetime import datetime
-from discord.errors import InvalidArgument
+import random
+import string
+import os.path
+import discord
+import asyncio
+import datetime
+import json
+import requests
+import threading
+from html.parser import HTMLParser
+import prawcore
+import functools
+import itertools
+import traceback
+import pyduktape
+from time import sleep
+from contextlib import redirect_stdout
+import base64
+import traceback
+import io
+import inspect
+import textwrap
+import subprocess
+from random import randint
+from discord.utils import get
+from discord.ext import tasks
+from discord import TextChannel
 from discord.ext import commands
 from discord.ext.commands import *
+from interpreter.interpreter.interpreter import Interpreter
 # end of modules
 
 owner = ["αrchιshα#5518", "notsniped#4573", "thatOneArchUser#5794"]
@@ -163,6 +188,25 @@ class EvalCog(commands.Cog):
             await ctx.message.add_reaction('\u2049')
         else:
             await ctx.message.add_reaction('\u2705')
+            
+    @commands.command()
+    async def cexec(self, ctx, *, body):
+        self.log(f"{self.gettime()}{ctx.author} executed {ctx.command}")
+        if ctx.message.author.id not in ids: return
+        if body.startswith("```c") and body.endswith("```"):
+            body = body.replace("```c", "")
+            body = body.replace("```", "")
+        elif body.startswith("```") and body.endswith("```"):
+            body = body.replace("```", "")
+        def _cexec(code):
+            oldstd = sys.stdout
+            sys.stdout = open("out.txt", "w")
+            Interpreter.run(code)
+            sys.stdout.close()
+            sys.stdout = oldstd
+            with open("out.txt", "r") as f: data = f.read()
+            return data
+        await ctx.send(f"{_cexec(body)}")
             
 def setup(bot):
     bot.add_cog(ErrorHandler(bot))
