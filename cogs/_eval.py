@@ -26,8 +26,7 @@ class EvalCommand(commands.Cog):
         userdat[str(ctx.message.author.id)][17] += 1
         self.save()
         if ctx.message.author.id not in ids: return
-        blocked_words = ['while', 'quit', 'exit', 'SystemExit', 'open', '.delete()', 'os', 'subprocess', 'history()', '("token")', "('token')",
-                        'aW1wb3J0IG9zCnJldHVybiBvcy5lbnZpcm9uLmdldCgndG9rZW4nKQ==', 'aW1wb3J0IG9zCnByaW50KG9zLmVudmlyb24uZ2V0KCd0b2tlbicpKQ==']
+        blocked_words = ['while', 'quit', 'exit', 'SystemExit', 'open', '.delete()', 'os', 'subprocess', 'history()', '("token")', "('token')"]
         if ctx.message.author.id != 705462972415213588:
             for x in blocked_words:
                 if x in body:
