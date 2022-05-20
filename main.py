@@ -1,7 +1,6 @@
 # modules
 import os
 import discord
-import time
 from discord.errors import InvalidArgument
 from discord.ext import commands
 from discord.ext.commands import *
@@ -89,7 +88,7 @@ async def reload(ctx, *, arg1):
         await ctx.send(e)
         print(f"[Cog] An unexpected error has occurred: {e}")
 
-bot.load_extension("cogs.Main")
+bot.load_extension("cogs.cexec")
 bot.load_extension("cogs.eval")
 keep_alive()
 bot.run('token')
