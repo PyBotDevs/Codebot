@@ -82,9 +82,7 @@ class EvalCog(commands.Cog):
         self.bot = bot
 
     def cleanup_code(self, content):
-        if content.startswith('```') and content.endswith('```'):
-            return '\n'.join(content.split('\n')[1:-1])
-
+        if content.startswith('```') and content.endswith('```'): return '\n'.join(content.split('\n')[1:-1])
         return content.strip('` \n')
 
     def get_syntax_error(self, e):
@@ -173,6 +171,7 @@ class EvalCog(commands.Cog):
             await ctx.message.add_reaction('\u2049')
         else:
             await ctx.message.add_reaction('\u2705')
+        print(f'[log] {ctx.author} executed .eval.')
 
 #    @commands.command()
 #    async def cexec(self, ctx, *, body):
