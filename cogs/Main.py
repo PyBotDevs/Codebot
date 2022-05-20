@@ -1,19 +1,9 @@
 # modules
-import random
-import json
 import os
 import discord
-import asyncio
-import datetime
-import time
-import cmath
 import math
-import string
-import praw
-import prawcore
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+import sys, subprocess
 from datetime import datetime
-from random import randint
 from discord.errors import InvalidArgument
 from discord.ext import commands
 from discord.ext.commands import *
@@ -74,15 +64,29 @@ class ErrorHandler(commands.Cog):
                 # How to use cooldowns:
                 # after @commands.command() add @commands.cooldown(1, cooldown, commands.BucketType.user)
 # end of error handler
-
-class MainCog(commands.Cog):
+                    
+def cleanup_code(content):
+	        if content.startswith('```') and content.endswith: return '\n'.join(content.split('\n')[1:-1])
+	        return content.strip('` \n')
+    
+class CexecCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-#    @commands.command(name='evaluate', aliases=['eval', 'e'])
-#    @commands.cooldown(1, 5, commands.BucketType.user)
-#    async def
+    @commands.command(name='cexecute', aliases=['cexec', 'c'])
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    async def cexec(self, ctx, *, body):
+	    body = cleanup_code(body)
+	    if os.path.isfile("./a.out"): os.system("rm -r ./a.out")
+	    if os.path.isfile("./file1.c"): os.system("rm -r ./file1.c")
+	    f = open("./file1.c", "w")
+	    f.write(body)
+	    f.close()
+	    c = subprocess.run("gcc ./file1.c", capture_output=True, text=True, shell=True)
+	    if c.returncode != 0: return await ctx.send(f"```c\n{c.stderr}```")
+	    p = subprocess.check_output("./a.out", shell=True)
+	    return await ctx.send(f"```c\n{p.decode()}\n```")
 
 def setup(bot):
     bot.add_cog(ErrorHandler(bot))
-    bot.add_cog(MainCog(bot))
+    bot.add_cog(CexecCog(bot))
