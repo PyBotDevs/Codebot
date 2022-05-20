@@ -1,46 +1,31 @@
-# eval modules
+# this code is being used by @Archbot , @isobot , and their alternative versions, this is being use with cogs for Discord bots.
+
+# modules
+import datetime
+import inspect
+import io
+import math
 import os
 import sys
-import time
-import praw
-import math
-import random
-import string
-import os.path
-import discord
-import asyncio
-import datetime
-import json
-import requests
-import threading
-from html.parser import HTMLParser
-import prawcore
-import functools
-import itertools
-import traceback
-import pyduktape
-from time import sleep
-from contextlib import redirect_stdout
-import base64
-import traceback
-import io
-import inspect
 import textwrap
-import subprocess
-from random import randint
-from discord.utils import get
-from discord.ext import tasks
+import traceback
+from contextlib import redirect_stdout
+import discord
+#import pyduktape
+import requests
 from discord import TextChannel
-from discord.ext import commands
+from discord.ext import commands, tasks
 from discord.ext.commands import *
+from discord.utils import get
 from interpreter.interpreter.interpreter import Interpreter
+
 # end of modules
 
 owner = ["αrchιshα#5518", "notsniped#4573", "thatOneArchUser#5794"]
 oid = [706697300872921088, 738290097170153472, 705462972415213588]
 
-now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
+#now = datetime.now()
+#current_time = now.strftime("%H:%M:%S")
 
 # error handler
 class ErrorHandler(commands.Cog):
@@ -188,25 +173,25 @@ class EvalCog(commands.Cog):
             await ctx.message.add_reaction('\u2049')
         else:
             await ctx.message.add_reaction('\u2705')
-            
-    @commands.command()
-    async def cexec(self, ctx, *, body):
-        self.log(f"{self.gettime()}{ctx.author} executed {ctx.command}")
-        if ctx.message.author.id not in ids: return
-        if body.startswith("```c") and body.endswith("```"):
-            body = body.replace("```c", "")
-            body = body.replace("```", "")
-        elif body.startswith("```") and body.endswith("```"):
-            body = body.replace("```", "")
-        def _cexec(code):
-            oldstd = sys.stdout
-            sys.stdout = open("out.txt", "w")
-            Interpreter.run(code)
-            sys.stdout.close()
-            sys.stdout = oldstd
-            with open("out.txt", "r") as f: data = f.read()
-            return data
-        await ctx.send(f"{_cexec(body)}")
+
+#    @commands.command()
+#    async def cexec(self, ctx, *, body):
+#        self.log(f"{self.gettime()}{ctx.author} executed {ctx.command}")
+#        if ctx.message.author.id not in oid: return
+#        if body.startswith("```c") and body.endswith("```"):
+#            body = body.replace("```c", "")
+#            body = body.replace("```", "")
+#        elif body.startswith("```") and body.endswith("```"):
+#            body = body.replace("```", "")
+#        def _cexec(code):
+#            oldstd = sys.stdout
+#            sys.stdout = open("out.txt", "w")
+#            Interpreter.run(code)
+#            sys.stdout.close()
+#            sys.stdout = oldstd
+#            with open("out.txt", "r") as f: data = f.read()
+#            return data
+#        await ctx.send(f"{_cexec(body)}")
             
 def setup(bot):
     bot.add_cog(ErrorHandler(bot))
