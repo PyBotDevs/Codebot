@@ -4,4 +4,4 @@ A simple Discord bot made for programmers by the [iso.dev team](https://github.c
 *(note that this bot is still in progress)*
 
 ## credits
-- `.evaluate` and `.cexecute` by thatOneArchUser
+- `.evaluate` and `.cexecute` by [thatOneArchUser](https://github.com/thatOneArchUser)
