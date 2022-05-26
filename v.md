@@ -6,9 +6,9 @@ A simple Discord bot made for programmers by the [iso.dev team](https://github.c
 
 > codes after `"```"` willbe ignored, please do the following instead:
 
-`\`\`\`c`
-`{codes here}`
-`\`\`\``
+\`\`\`c
+{codes here}
+\`\`\`
 
 
 *(note that this bot is still in progress)*
