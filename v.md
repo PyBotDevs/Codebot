@@ -1,7 +1,7 @@
 # Codebot2 
 A simple Discord bot made for programmers by the [iso.dev team](https://github.com/PyBotDevs)
 
-### note
+## note
 put your bot's token in `bot.run('token')` to run it
 
 *(note that this bot is still in progress)*
