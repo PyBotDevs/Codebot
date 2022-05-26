@@ -37,6 +37,16 @@ async def on_ready():
 # end of startup
 
 @bot.command()
+async def help(ctx):
+    embed = discord.Embed(title='help command', description='my prefix is `.`', color=discord.Color.red())
+    embed.add_field(name='commands:', value='--------------------', inline=False)
+    embed.add_field(name='`.evaluate`', value='aliases: `.eval`, `.e`\ndescription: this command runs your Python code\nusage: `.evaluate [python_code]`\n...', inline=False)
+    embed.add_field(name='`.cexecute`', value='aliases: `.cexec`, `.c`\ndescription: this command runs your C code\nusage: `.cexecute [c_code]`\n...', inline=False)
+    embed.add_field(name='blocked words:', value='--------------------', inline=False)
+    embed.add_field(name='words below has been banned for security reasons', value="`'while', 'quit', 'exit', 'SystemExit', 'open', '.delete()', 'os', 'subprocess', 'history()', '(\"token\")', '('token')'`", inline=False)
+    await ctx.reply(embed=embed)
+    
+@bot.command()
 async def load(ctx, *, arg1):
     if ctx.message.author.id in oid:
         pass
