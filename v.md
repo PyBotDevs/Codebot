@@ -1,9 +1,7 @@
 # Codebot2 
 A simple Discord bot made for programmers by the [iso.dev team](https://github.com/PyBotDevs)
 
-## versions:
-> 20220501
+*(note that this bot is still in progress)*
 
-> 20220520
-
-> 20220526
+## credits
+- `.evaluate` and `.cexecute` by thatOneArchUser
