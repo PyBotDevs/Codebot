@@ -6,11 +6,11 @@ A simple Discord bot made for programmers by the [iso.dev team](https://github.c
 
 > codes after `"```"` will be ignored in `.cexecute` command, please do the following instead:
 
-.execute ```c
+.execute \`\`\`c
 
 {codes here}
 
-```
+\`\`\`
 
 
 *(note that this bot is still in progress)*
