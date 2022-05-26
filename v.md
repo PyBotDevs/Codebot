@@ -5,9 +5,9 @@ A simple Discord bot made for programmers by the [iso.dev team](https://github.c
 > put your bot's token in `bot.run('token')` to run it
 
 > codes after `"```"` willbe ignored, please do this instead: 
-> "```c
-> {codes here}
-> ```"
+ \`\`\`c
+ {codes here}
+ \`\`\`
 
 
 *(note that this bot is still in progress)*
