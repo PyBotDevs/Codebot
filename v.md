@@ -4,13 +4,13 @@ A simple Discord bot made for programmers by the [iso.dev team](https://github.c
 ## note
 > put your bot's token in `bot.run('token')` to run it
 
-> codes after `"```"` willbe ignored, please do the following instead:
+> codes after `"```"` will be ignored in `.cexecute` command, please do the following instead:
 
-\`\`\`c
+`.execute \```c`
 
-{codes here}
+`{codes here}`
 
-\`\`\`
+`\````
 
 
 *(note that this bot is still in progress)*
