@@ -172,25 +172,6 @@ class EvalCog(commands.Cog):
         else:
             await ctx.message.add_reaction('\u2705')
         print(f'[log] {ctx.author} executed .eval.')
-
-#    @commands.command()
-#    async def cexec(self, ctx, *, body):
-#        self.log(f"{self.gettime()}{ctx.author} executed {ctx.command}")
-#        if ctx.message.author.id not in oid: return
-#        if body.startswith("```c") and body.endswith("```"):
-#            body = body.replace("```c", "")
-#            body = body.replace("```", "")
-#        elif body.startswith("```") and body.endswith("```"):
-#            body = body.replace("```", "")
-#        def _cexec(code):
-#            oldstd = sys.stdout
-#            sys.stdout = open("out.txt", "w")
-#            Interpreter.run(code)
-#            sys.stdout.close()
-#            sys.stdout = oldstd
-#            with open("out.txt", "r") as f: data = f.read()
-#            return data
-#        await ctx.send(f"{_cexec(body)}")
             
 def setup(bot):
     bot.add_cog(ErrorHandler(bot))
