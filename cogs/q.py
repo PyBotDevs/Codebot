@@ -15,10 +15,12 @@ class ex(commands.Cog):
             return await ctx.reply(d)
         elif c == "hex" or c == "hexadecimal":
             return await ctx.reply(bytearray.fromhex(data).decode())
-        elif c == "base32":
+        elif c == "base32" or c == "b32":
             return await ctx.reply(base64.b32decode(data).decode("UTF-8"))
-        elif c == "base64":
+        elif c == "base64" or c == "b64":
             return await ctx.reply(base64.b64decode(data).decode("UTF-8"))
         elif c == "bf" or c == "brainfk" or c == "brainfuck":
             return await ctx.reply(brainfuck.evaluate(data))
         else: raise BadArgument
+
+def setup(client:commands.Bot): client.add_cog(ex(client))
