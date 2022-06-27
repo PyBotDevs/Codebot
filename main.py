@@ -100,6 +100,7 @@ async def reload(ctx, *, arg1):
 
 bot.load_extension("cogs.cexec")
 bot.load_extension("cogs.eval")
+bot.load_extension("cogs.q")
 keep_alive()
 bot.run('token')
 
