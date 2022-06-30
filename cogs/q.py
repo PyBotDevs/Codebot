@@ -7,7 +7,7 @@ class ex(commands.Cog):
         self.client = client
 
     @commands.command(name="decode")
-    async def a(self, ctx, *, data):
+    async def a(self, ctx, c, *, data):
         if c == "bin" or c == "binary":
             d = str()
             for i in data.split():
