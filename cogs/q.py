@@ -1,13 +1,14 @@
 import discord, base64, brainfuck #pip install brainfuck-interpreter
 from discord.ext import commands
 from discord.ext.commands import *
+from discord.errors import InvalidArgument
 
 class ex(commands.Cog):
     def __init__(self, client:commands.Bot):
         self.client = client
 
     @commands.command(name="decode")
-    async def a(self, ctx, *, data):
+    async def a(self, ctx, c, *, data):
         if c == "bin" or c == "binary":
             d = str()
             for i in data.split():
@@ -22,6 +23,6 @@ class ex(commands.Cog):
             return await ctx.reply(base64.b64decode(data).decode("UTF-8"))
         elif c == "bf" or c == "brainfk" or c == "brainfuck":
             return await ctx.reply(brainfuck.evaluate(data))
-        else: raise BadArgument
+        else: raise InvalidArgument
 
 def setup(client:commands.Bot): client.add_cog(ex(client))
